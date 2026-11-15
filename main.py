@@ -3,6 +3,7 @@ from dasar import validasi_input, fuzzifikasi, aktivasi_aturan
 from mamdani import mamdani
 from sugeno import sugeno
 from tsukamoto import tsukamoto
+from tampilan import tampilkan_hasil
 
 UJI_VALID = [
     ("A", 24, 45), ("B", 28, 55), ("C", 30, 60), ("D", 33, 65),
@@ -44,10 +45,7 @@ def jalankan_batch():
         tampil_detail(nama, T, H, mu, alpha, m, s, t)
         hasil.append((nama, m, s, t))
 
-    print("\n=== RINGKASAN HASIL (RPM) ===")
-    print(f"{'Uji':<5}{'Mamdani':>10}{'Sugeno':>10}{'Tsukamoto':>12}")
-    for nama, m, s, t in hasil:
-        print(f"{nama:<5}{f2(m):>10}{f2(s):>10}{f2(t):>12}")
+    tampilkan_hasil(hasil)
 
     print("\n=== INPUT DITOLAK ===")
     for nama, suhu, lembap, pesan in ditolak:
